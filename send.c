@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:37:06 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/21 15:37:06 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/21 19:12:22 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,8 @@ int	send(pid_t pid, const char *s)
 	{
 		shift = 8;
 		while (shift--)
-		{
-			if (kill(pid, getsig(s[i] & (1 << shift))))
+			if ((usleep(100) || 1) && kill(pid, getsig(s[i] & (1 << shift))))
 				return (-1);
-			usleep(100);
-		}
 	}
 	return (0);
 }

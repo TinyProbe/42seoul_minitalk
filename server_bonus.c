@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:45:13 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/21 15:46:23 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/21 21:19:51 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 t_string	g_msg;
 
+static int	extract();
+
 int	main(void)
 {
-	ft_putnbr_fd(getpid(), 1);
+	extract();
+	write(1, g_msg.me, g_msg.len_me);
 	write(1, "\n", 1);
 	signal(SIGUSR1, handler);
 	signal(SIGUSR2, handler);
@@ -24,4 +27,15 @@ int	main(void)
 	while (1)
 		pause();
 	return (0);
+}
+
+static int	extract()
+{
+	char	*tmp;
+
+	g_msg.pid_me = getpid();
+	tmp = ft_itoa(g_msg.pid_me);
+	g_msg.len_me = ft_strlen(tmp);
+	ft_memcpy(g_msg.me, tmp, g_msg.len_me);
+	free(tmp);
 }

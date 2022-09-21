@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:45:11 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/21 15:46:12 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/21 19:05:20 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 
 static int	getsig(int bit);
 
-int	send(pid_t pid, const char *s)
+int	send(pid_t pid, const char *s, int n)
 {
 	int	shift;
-	int	len;
 	int	i;
 
-	len = ft_strlen(s);
 	i = -1;
-	while (++i <= len)
+	while (++i < n)
 	{
 		shift = 8;
 		while (shift--)
-		{
-			if (kill(pid, getsig(s[i] & (1 << shift))))
+			if ((usleep(100) || 1) && kill(pid, getsig(s[i] & (1 << shift))))
 				return (-1);
-			usleep(100);
-		}
 	}
 	return (0);
 }
