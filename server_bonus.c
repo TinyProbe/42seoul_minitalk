@@ -33,6 +33,7 @@ static int	extract()
 {
 	char	*tmp;
 
+	g_msg.who = SERVER;
 	g_msg.pid_me = getpid();
 	tmp = ft_itoa(g_msg.pid_me);
 	g_msg.len_me = ft_strlen(tmp);

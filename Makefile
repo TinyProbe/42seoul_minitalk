@@ -26,8 +26,10 @@ SRC_MC		= client.c			\
 
 SRC_BS		= server_bonus.c	\
 			  handler_bonus.c	\
+			  send_bonus.c		\
 
 SRC_BC		= client_bonus.c	\
+			  handler_bonus.c	\
 			  send_bonus.c		\
 
 LIB			= libft/libft.a

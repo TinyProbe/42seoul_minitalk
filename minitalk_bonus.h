@@ -20,22 +20,24 @@
 
 # define MAX_LEN	1000000
 # define MAX_PID	100
+# define SERVER		1
+# define CLIENT		2
 
 typedef struct s_string
 {
+	int		who;
 	pid_t	pid_me;
-	char	me[MAX_PID];
-	char	len_me;
 	pid_t	pid_you;
+	char	me[MAX_PID];
 	char	you[MAX_PID];
-	char	len_you;
 	char	str[MAX_LEN];
+	char	len_me;
+	char	len_you;
 	int		len;
 	int		shift;
 }	t_string;
 
 extern t_string	g_msg;
-extern t_string	g_msg2;
 
 int		send(pid_t pid, const char *s, int n);
 void	handler(int signum);

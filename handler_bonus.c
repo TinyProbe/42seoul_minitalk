@@ -13,7 +13,7 @@
 #include "minitalk_bonus.h"
 
 static void	quarter();
-static void pack_anal();
+static void reply();
 
 void	handler(int signum)
 {
@@ -29,18 +29,26 @@ static void	quarter()
 	g_msg.shift = 8;
 	if (g_msg.str[g_msg.len++] == 0)
 	{
-		write(1, g_msg.str + (g_msg.len_you + 1),
-				g_msg.len - (g_msg.len_you + 2));
+		write(1, g_msg.str + (g_msg.str[0] + 1),
+				g_msg.len - (g_msg.str[0] + 2));
 		write(1, "\n", 1);
+		if (g_msg.who == SERVER)
+			reply();
+		else
+			exit(0);
 		g_msg.len = 0;
 	}
 	g_msg.str[g_msg.len] = 0;
 }
 
-static void pack_anal()
+static void reply()
 {
 	g_msg.len_you = g_msg.str[0];
 	ft_memcpy(g_msg.you, g_msg.str + 1, g_msg.len_you);
 	g_msg.you[g_msg.len_you] = '\0';
 	g_msg.pid_you = ft_atoi(g_msg.you);
+	send(g_msg.pid_you, &(g_msg.len_me), 1);
+	send(g_msg.pid_you, g_msg.me, g_msg.len_me);
+	send(g_msg.pid_you, g_msg.str + (g_msg.str[0] + 1),
+			g_msg.len - (g_msg.str[0] + 2));
 }
