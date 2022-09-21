@@ -6,7 +6,7 @@
 #    By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:35:02 by tkong             #+#    #+#              #
-#    Updated: 2022/09/21 15:35:05 by tkong            ###   ########.fr        #
+#    Updated: 2022/09/21 15:43:43 by tkong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,17 @@ BONUS1		= server_bonus
 BONUS2		= client_bonus
 CC			= cc
 CFLAG		= -Wall -Wextra -Werror
-SRC_MS		= server.c		\
-			  handler.c		\
+SRC_MS		= server.c			\
+			  handler.c			\
 
-SRC_MC		= client.c		\
-			  send.c		\
+SRC_MC		= client.c			\
+			  send.c			\
 
-SRC_BS		= 			\
+SRC_BS		= server_bonus.c	\
+			  handler_bonus.c	\
 
-SRC_BC		= 			\
+SRC_BC		= client_bonus.c	\
+			  send_bonus.c		\
 
 LIB			= libft/libft.a
 RM			= rm -f
