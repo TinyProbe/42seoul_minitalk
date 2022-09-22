@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:45:07 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/22 16:16:56 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/22 17:02:57 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 t_string	g_msg;
 
-static void	extract(int argc, char **argv);
+static void	extract(char **argv);
 
 int	main(int argc, char **argv)
 {
 	if (argc != 3)
 		return (-1);
-	extract(argc, argv);
+	extract(argv);
 	send(g_msg.pid_you, &(g_msg.len_me), 1);
 	send(g_msg.pid_you, g_msg.me, g_msg.len_me);
 	send(g_msg.pid_you, argv[2], ft_strlen(argv[2]) + 1);
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-static void	extract(int argc, char **argv)
+static void	extract(char **argv)
 {
 	char	*tmp;
 

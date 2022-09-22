@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:45:10 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/22 16:22:54 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/22 16:49:14 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	reply(void)
 {
 	g_msg.len_you = g_msg.str[0];
 	ft_memcpy(g_msg.you, g_msg.str + 1, g_msg.len_you);
-	g_msg.you[g_msg.len_you] = '\0';
+	g_msg.you[(int) g_msg.len_you] = '\0';
 	g_msg.pid_you = ft_atoi(g_msg.you);
 	send(g_msg.pid_you, &(g_msg.len_me), 1);
 	send(g_msg.pid_you, g_msg.me, g_msg.len_me);
