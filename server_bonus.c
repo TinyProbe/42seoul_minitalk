@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:45:13 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/21 21:19:51 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/22 16:21:53 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_string	g_msg;
 
-static int	extract();
+static void	extract(void);
 
 int	main(void)
 {
@@ -29,7 +29,7 @@ int	main(void)
 	return (0);
 }
 
-static int	extract()
+static void	extract(void)
 {
 	char	*tmp;
 

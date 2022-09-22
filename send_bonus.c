@@ -6,13 +6,13 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:45:11 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/21 19:05:20 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/22 16:22:30 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-static int	getsig(int bit);
+static int	getsig(char bit);
 
 int	send(pid_t pid, const char *s, int n)
 {
@@ -30,7 +30,7 @@ int	send(pid_t pid, const char *s, int n)
 	return (0);
 }
 
-static int	getsig(int bit)
+static int	getsig(char bit)
 {
 	if (bit)
 		return (SIGUSR2);

@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:46:41 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/21 21:27:37 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/22 15:04:45 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ typedef struct s_string
 	int		who;
 	pid_t	pid_me;
 	pid_t	pid_you;
+	char	len_me;
+	char	len_you;
 	char	me[MAX_PID];
 	char	you[MAX_PID];
 	char	str[MAX_LEN];
-	char	len_me;
-	char	len_you;
 	int		len;
 	int		shift;
 }	t_string;

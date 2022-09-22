@@ -6,14 +6,14 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:45:10 by tkong             #+#    #+#             */
-/*   Updated: 2022/09/21 22:05:43 by tkong            ###   ########.fr       */
+/*   Updated: 2022/09/22 16:22:54 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-static void	quarter();
-static void reply();
+static void	quarter(void);
+static void	reply(void);
 
 void	handler(int signum)
 {
@@ -24,13 +24,13 @@ void	handler(int signum)
 		quarter();
 }
 
-static void	quarter()
+static void	quarter(void)
 {
 	g_msg.shift = 8;
 	if (g_msg.str[g_msg.len++] == 0)
 	{
 		write(1, g_msg.str + (g_msg.str[0] + 1),
-				g_msg.len - (g_msg.str[0] + 2));
+			g_msg.len - (g_msg.str[0] + 2));
 		write(1, "\n", 1);
 		if (g_msg.who == SERVER)
 			reply();
@@ -41,7 +41,7 @@ static void	quarter()
 	g_msg.str[g_msg.len] = 0;
 }
 
-static void reply()
+static void	reply(void)
 {
 	g_msg.len_you = g_msg.str[0];
 	ft_memcpy(g_msg.you, g_msg.str + 1, g_msg.len_you);
@@ -49,6 +49,6 @@ static void reply()
 	g_msg.pid_you = ft_atoi(g_msg.you);
 	send(g_msg.pid_you, &(g_msg.len_me), 1);
 	send(g_msg.pid_you, g_msg.me, g_msg.len_me);
-	send(g_msg.pid_you, g_msg.str + (g_msg.str[0] + 1),
-			g_msg.len - (g_msg.str[0] + 2));
+	send(g_msg.pid_you, g_msg.str + (g_msg.len_you + 1),
+		g_msg.len - (g_msg.len_you + 1));
 }
